@@ -16,7 +16,7 @@ jobs:
 
       - name: "Build Docker Image"
         run: |
-          docker login -u manshimm -p $DOCKERHUB_PAT
+          echo "${{ secrets.DOCKERHUB_PAT }}" | docker login -u manshimm --password-stdin
           docker build -t manshimm/mynginx .
           docker push manshimm/mynginx
         env:
